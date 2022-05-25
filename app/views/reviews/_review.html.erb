@@ -1,0 +1,19 @@
+
+<p>
+  <strong>review</strong>
+  <%= review.body %>
+</p>
+
+<p>
+  <%= link_to "Destroy Comment", [review.product, review], data: 
+  {
+     turbo_method: :delete,
+     turbo_confirm: "Are you sure?"
+              } %>
+</p>
+
+
+<%# <h2>Add a comment:</h2>
+<%= render 'reviews/form' %> 
+
+
