@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   #   # Redirests signing out users back to sign-in
   #   get "users", to: "devise/sessions#new"
   # end
+  resources :line_items
   resources :products do
     resources :reviews
   end

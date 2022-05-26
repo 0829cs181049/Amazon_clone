@@ -16,12 +16,16 @@ class ProductsController < ApplicationController
       @product = Product.new(product_params)
       @product.picture.attach(product_params[:picture])  
 
-      if @product.save
+      if @product.save 
         redirect_to @product
       else
         render :new, status: :unprocessable_entity
       end
     end
+
+    # def quantity
+    #   @name = 'xyz'
+    # end
     
     def edit
       @product = Product.find(params[:id])
