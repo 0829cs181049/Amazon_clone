@@ -1,0 +1,31 @@
+<div class= "container">
+ <h1>Card </h1>
+  <table>
+   <tr>
+     <%# <th>picture </th> %>
+     <th>picture</th>
+     <th>name </th> 
+     <th>desription</th>
+     <th>price</th>
+   </tr>
+
+    <% @card_items.each do |cart| %>
+     <tr>
+       <%# <td><%= cart.product.picture, size: "120x120" %></td>  
+       <td><%= image_tag cart.product.picture, size: "120x120" %></td>
+       <td><%= cart.product.name %></td>    
+       <td><%= cart.product.description %></td> 
+       <td><%= cart.product.price %></td><br>
+       <%# <td><%= link_to "order new" render "form", article: @article %> 
+        
+       <td><%#= link_to "show", product_path(product) %></td>
+       <td><%#= link_to "edit", edit_product_path(product) %></td>
+       <td><%#=link_to "Destroy", product_path(product), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                   } %> </td>
+      </tr>
+   <%end%>
+  </table>
+</div>
+ 

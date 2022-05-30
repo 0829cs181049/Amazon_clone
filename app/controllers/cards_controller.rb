@@ -1,19 +1,24 @@
 class CardsController < ApplicationController
 
-  def show
-    binding.pry
-    @cart = @current_cart
+  def index
+    @card_items = current_user.card.line_items
+    # @card = @current_cart
   end
-    
+
+  def show
+    @cart = current_user.card
+  end
+
   def destroy
-    @cart = @current_cart
-    @cart.destroy
-    session[:cart_id] = nil
+    @card = @current_cart
+    @card.destroy
+    session[:card_id] = nil
     redirect_to root_path
   end
    
-   private 
-  def cart_params
-     params.require(:cart).permit(:user_id)
+  private 
+
+  def card_params
+     params.require(:card).permit(:user_id)
   end
 end

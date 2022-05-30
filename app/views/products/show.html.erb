@@ -1,7 +1,8 @@
+<div class= "container">
 <h1><%= @product.name %></h1>
 
 <p><%= @product.description %></p><br>
-<%= image_tag(url_for(@product.picture))%>
+<%= image_tag(url_for(@product.picture ))%>
 <p><%= @product.price %></p>
 <ul>
   <li><%= link_to "Edit", edit_product_path(@product) %></li>
@@ -18,7 +19,6 @@
 <h3>Add a Review:</h3>
 <%= render :partial => "reviews/form", :locals => { review: @review } %>
 <%# <%= render 'reviews/form' %> 
-
-
+</div>
 
 

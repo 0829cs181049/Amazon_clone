@@ -1,10 +1,11 @@
 class ProductsController < ApplicationController
     def index
+      # binding.pry
       @products= Product.all
     end
   
     def show
-      #  binding.pry
+    #  binding.pry
       @product = Product.find(params[:id])
     end
   
@@ -22,10 +23,6 @@ class ProductsController < ApplicationController
         render :new, status: :unprocessable_entity
       end
     end
-
-    # def quantity
-    #   @name = 'xyz'
-    # end
     
     def edit
       @product = Product.find(params[:id])
@@ -44,7 +41,6 @@ class ProductsController < ApplicationController
     def destroy
       @product = Product.find(params[:id])
       @product.destroy
-  
       redirect_to root_path, status: :see_other
     end
     private
