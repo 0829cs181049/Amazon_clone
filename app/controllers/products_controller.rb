@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
     end
   
     def new
+      # binding.pry
       @product = Product.new
     end
   

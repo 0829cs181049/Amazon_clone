@@ -1,12 +1,29 @@
-<h2>All Orders</h2>
+<table>
+  <tr>
+    <th>picture </th>
+    <th>name </th> 
+    <th>price</th>
+    <th>quantity</th>
+    <th>item_total_price</th>
+  </tr>
 
-<% @orders.each do |order| %>
-  <p><%= order.name %></p>
-  <p><%= order.email %></p>
-  <p><%=order.line_item%></p>
-  <ul>
-    <% order.line_items.each do |item| %>
-    <li><%= item.quantity %> x <%= item.product.name %></li>
-    <% end %>
-  </ul>
-<% end
+  <% @card.line_items.each do |line_item| %>
+    <tr>  
+      <td> <%= image_tag line_item.product.picture, size: "120x120" %>
+      <td> <%= line_item.product.name %></td>
+      <td> ₹<%= (line_item.product.price) %></td>
+      <td> <%= line_item.quantity %></td>
+      <td> ₹<%= (line_item.total_price) %></td>     
+    </tr>
+  <% end %>
+</table>
+
+<div class = "hh">
+<h3>Sub total: ₹<%= (@card.sub_total) %></h3>
+</div>
+<div class = "check">
+  <%= link_to "check-out", 'orders/form'  %> 
+</div>
+
+
+ 

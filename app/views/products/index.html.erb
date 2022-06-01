@@ -1,30 +1,29 @@
 <div class ="container">
-  <h1>Product</h1>
-  <%= link_to "Add product", new_product_path,class:'btn btn-primary' %><br>
-  <table rowspan="20">
-   <tr>
-     <th>picture </th>
-     <th>name </th> 
-     <th>desription</th>
-     <th>price</th>
-   </tr>
+ <h1>Product</h1>
+ <table >
+    <tr>
+      <th>picture </th>
+      <th>name </th> 
+      <th>desription</th>
+      <th>price</th>
+    </tr>
 
     <% @products.each do |product| %>
-     <tr>
-       <td><%= image_tag product.picture, size: "120x120" %></td> 
-       <td><%= product.name%></td>        
-       <td><%=product.description%></td>
-       <td><%=product.price%></td>    
-       <td><%= link_to "show", product_path(product) %></td>
-       <td><%= link_to "edit", edit_product_path(product) %></td>
-       <td><%=link_to "Destroy", product_path(product), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                   } %> </td>
-        <td><%=button_to "Add  to cart", line_items_path(:product_id => product.id)%></td>
-       <%# <td><%=link_to "Add_to_cart", line_items_path(product) %></td> 
+      <tr>
+        <td><%= image_tag product.picture, size: "120x120" if product.picture? %></td> 
+        <td><%= product.name%></td>        
+        <td><%=product.description%></td>
+        <td>₹<%=product.price%></td>    
+        <td><%= link_to "show", product_path(product) %></td>
+        <td><%= link_to "edit", edit_product_path(product) %></td>
+        <td><%=link_to "Destroy", product_path(product), data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure?"
+            } %> </td>
+        <td><%= link_to 'Add To Cart', line_items_path(:product_id => product.id),data: { turbo_method: :post } %>          
+                    </td>
       </tr>
-   <%end%>
+    <%end%>
   </table>
 </div>
 

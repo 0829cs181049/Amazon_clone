@@ -1,16 +1,14 @@
 class CardsController < ApplicationController
 
   def index
-    @card_items = current_user.card.line_items
-    # @card = @current_cart
-  end
-
-  def show
-    @cart = current_user.card
+    # binding.pry
+    # @card_items = current_user.card.line_items
+    # @card = @current_cart<table>
+    @card = current_user.card
   end
 
   def destroy
-    @card = @current_cart
+    @card = @current_cart.card
     @card.destroy
     session[:card_id] = nil
     redirect_to root_path

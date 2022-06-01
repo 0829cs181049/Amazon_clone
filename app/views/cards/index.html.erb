@@ -1,31 +1,31 @@
-<div class= "container">
- <h1>Card </h1>
-  <table>
-   <tr>
-     <%# <th>picture </th> %>
-     <th>picture</th>
-     <th>name </th> 
-     <th>desription</th>
-     <th>price</th>
-   </tr>
+<table>
+  <tr>
+    <th>picture </th>
+    <th>name </th> 
+    <th>price</th>
+    <th>quantity</th>
+    <th>item_total_price</th>
+  </tr>
 
-    <% @card_items.each do |cart| %>
-     <tr>
-       <%# <td><%= cart.product.picture, size: "120x120" %></td>  
-       <td><%= image_tag cart.product.picture, size: "120x120" %></td>
-       <td><%= cart.product.name %></td>    
-       <td><%= cart.product.description %></td> 
-       <td><%= cart.product.price %></td><br>
-       <%# <td><%= link_to "order new" render "form", article: @article %> 
-        
-       <td><%#= link_to "show", product_path(product) %></td>
-       <td><%#= link_to "edit", edit_product_path(product) %></td>
-       <td><%#=link_to "Destroy", product_path(product), data: {
+  <% @card.line_items.each do |line_item| %>
+    <tr>  
+      <td> <%= image_tag line_item.product.picture, size: "120x120" %>
+      <td> <%= line_item.product.name %></td>
+      <td> ₹<%= (line_item.product.price) %></td>
+      <td> <%= line_item.quantity %></td>
+      <td> ₹<%= (line_item.total_price) %></td>
+      <td><%= link_to "reduce", line_item_reduce_path(:id => line_item),data: {
+          turbo_method: :post
+        }%></td>
+      <td><%= link_to "Remove Item", line_item_path(line_item), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                   } %> </td>
-      </tr>
-   <%end%>
-  </table>
+                   } %></td>
+      <td><%= link_to "Order now", orders_path(@order)%></td>                
+    </tr>
+  <% end %>
+</table>
+<div class = "hh">
+<h3>Sub total: ₹<%= (@card.sub_total) %></h3>
 </div>
  
