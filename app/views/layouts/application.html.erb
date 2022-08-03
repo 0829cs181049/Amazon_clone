@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= yield(:search) %>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
@@ -32,47 +32,101 @@
     h1{
       color: #4287f5;
     }
-    .navbar-btn{
+    /* .navbar-btn{
       text-align: center;
       margin: auto;
-    }
+    } */
     .hh{
-    text-align: end;
+     text-align: end;
+     /* position: absolute;
+     right: 200px; */
     }
     .container{
       text-align: start;
     }
     .order {
-        width: 20%
+      width: 20%
     }
     .check{
       text-align: end;
     }
+    .fa-lg{
+      font-size: 30px;
+    }
+    .sign{
+      text-align: end;
+      position: absolute;
+      left: 200px;
+      /* top: 16px; */
+    }
+    .row row-cols-1 row-cols-md-3 g-4{
+      margin: auto;
+    }
+    .card {
+      width: 160px;
+      margin-right: 20px;
+      /* border-spacing: 0 15px; */
+    }
+    .d-sm-flex{
+      margin-right: 100px;
+    }
+    .card{
+      /* align-self: center; */
+      width: auto;
+    }
+    /* .checkout{
+     align-items: center;
+     /* justify-content: center; */ 
     
+    .checkout{
+    /* border: 5px solid #FFFF00; */
+    /* text-align: center; */
+     align-items: center;
+    }
 
   </style>
-
   <body>
-    <nav class="navbar navbar-expand-lg bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">AmazonClone</a>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav ">
-            <div class="navbar-btn ">
-              <%= link_to "Home", root_path%>
-              <%= link_to "Sign Out", destroy_user_session_path , data: {turbo_method: :delete} %>
-            </div>
-            <a class="nav-link" href="#">contact</a>
-            <div class="navbar-btn">
-              <%= link_to "Cart", cards_path %>
-            </div>
-            <a class="nav-link" href="#">contact</a>
-            <div class="navbar-btn ">
-              <%= link_to "order", orders_path %>
-            </div>
-        </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">AmazonClone</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class:"btn btn-primary"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Contact us", root_path, class:"btn btn-primary"%>
+          </li>
+        
+        <form class="d-flex">
+           <%= form_tag url: products_path, method: :get do  %> 
+              <%= text_field_tag  'q', params[:q]  %>
+              <%= submit_tag "Search"%> 
+              <%# <% redirect %> 
+            <% end %> 
+              <%# <%byebug%> 
+            <%# <%= search_form_for @q, remote: true do |f| %> 
+              <%# <%= f.label :name_cont, 'Full Name'%> 
+              <%# <%= f.search_field :name_cont %>  
+              <%# <%= f.submit %>  
+            <%# <% end %>  
+
+           <%# <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-primary",  type="submit",  >Search</button>  %>
+          <%# <%= link_to "Search", _searchs_path,class:"btn btn-primary" %>
+          <%= link_to cards_path do %>
+            <i class="fa badge fa-lg mt-1 pe-auto" value=8>&#xf07a;</i>
+          <%end%>
+          <%= link_to "My order", orders_path,class:"btn btn-primary", style:"width: 200px" %>
+            <%= link_to "Sign Out", destroy_user_session_path , data: {turbo_method: :delete},class:'btn btn-primary', style:'width: 150px' %> 
+        </form>
       </div>
-    </nav>
+    </div>
+  </nav>
     <%= yield %>
   </body>
 </html>
+

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# lnfekl
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -9,10 +12,16 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-    
-  after_create :create_card
+
+  validates :email, presence: true
+  validates :phone_number, presence: true
+  validates :address, presence: true
+  validates :pincode, presence: true
+
+  after_create :create_cart
 
   def create_cart
-    Card.create(user_id:self.id)
+    # binding.pry
+    Card.create(user_id: id)
   end
 end

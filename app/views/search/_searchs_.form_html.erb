@@ -1,0 +1,42 @@
+
+ <%= search_form_for @search do |f| %> # custom Ransack form builder
+ 
+  # Search if the name field contains
+  <%= f.label :product.name_cont %>
+  <%= f.search_field :product.name_cont %>
+  
+  <%# # Attributes may be chained. Search multiple attributes for one value
+  <%= f.label :name_or_description_or_email_or_articles_title_cont %>
+  <%# <%= f.search_field :name_or_description_or_email_or_articles_title_cont %>
+
+<% end %> 
+
+<%# <% content_for :search do %>
+  <%# <div class="large-8 small-9 columns"> %>
+  <%# <%= search_form_for @search do |f| %> 
+    <%# <%= f.text_field :name_cont, class: "radius-left expand", placeholder: "product name" %> 
+  <%# </div> %>
+    <%# <div class="large-4 small-3 columns"> %>
+      <%# <%= f.sub=begin  =endmit "Search", class: "radius-right button" %> 
+    <%# </div> %>
+  <%# <% end %> 
+<%# <% end %> 
+
+
+
+<%# <%= search_form_for @q do |f| %>
+
+  <%# # Search if the name field contains... %>
+  <%# <%= f.label :name_cont %> 
+  <%# <%= f.search_field :name_cont %>
+
+  <%# # Search if an associated articles.title starts with...
+  <%= f.label :products_name_start %>
+  <%# <%= f.search_field :products_name_start %> 
+
+  <%# # Attributes may be chained. Search multiple attributes for one value... %>
+  <%# <%= f.label :name_or_description_or_email_or_articles_title_cont %>
+  <%# <%= f.search_field :name_or_description_or_email_or_articles_title_cont %> 
+
+  <%# <%= f.submit %> 
+<%# <% end %> 

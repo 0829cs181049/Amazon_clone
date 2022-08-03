@@ -64,6 +64,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'rubocop-rails', require: false
   gem 'shoulda-matchers'
+  gem 'ransack' 
 end
 
 group :test do
