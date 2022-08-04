@@ -35,7 +35,7 @@ gem 'jbuilder'
 # Use Redis adapter to run Action Cable in production
 gem 'redis'
 
-gem 'pg'
+gem 'pg', '~> 1.2', '>= 1.2.3'
 
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
