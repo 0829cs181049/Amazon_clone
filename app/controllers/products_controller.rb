@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
     @q = Product.ransack(params[:q])
     @products = @q.result
     # redirect_to @product
+    # @products = Product.all
   end
 
   # def search
