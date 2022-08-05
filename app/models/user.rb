@@ -7,7 +7,6 @@ class User < ApplicationRecord
   # has_many :reviews
   # has_one :card, dependent: :destroy
   # has_many :orders, dependent: :destroy
-  has_one :card
   has_many :orders
   has_many :reviews, dependent: :destroy
   devise :database_authenticatable, :registerable,
@@ -20,8 +19,8 @@ class User < ApplicationRecord
 
   after_create :create_cart
 
-  def create_cart
-    # binding.pry
-    Card.create(user_id: id)
-  end
+  # def create_cart
+  #   # binding.pry
+  #   Card.create(user_id: id)
+  # end
 end

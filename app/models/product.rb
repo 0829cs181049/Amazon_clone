@@ -9,8 +9,7 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true
   validates :name, presence: true
-def search_key
-end
+
   # include PgSearch
   # multisearchable against: :name
 
